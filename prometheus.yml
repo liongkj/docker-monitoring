@@ -6,4 +6,4 @@ scrape_configs:
   scrape_interval: 10s
   static_configs:
   - targets:
-    - cadvisor:9091
+    - cadvisor:8080 # this is not the docker port
