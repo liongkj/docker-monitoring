@@ -1,14 +1,5 @@
-#first create a folder - mkdir ~/docker-prometheus
-#create a file - docker-compose.yml inside it with the following contents
-#you also need to copy prometheus.yml file inside the same directory
-
 version: '3.2'
 services:
-  # grafana:
-  #   image: grafana/grafana
-  #   container_name: grafana
-  #   ports:
-  #     - 9092:3000
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
@@ -30,11 +21,10 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
-    privileged: true
     depends_on:
       - redis
   redis:
     image: redis:latest
-    container_name: redis-monitoring
+    container_name: redis
     ports:
       - 6379:6379
